@@ -1,0 +1,12 @@
+.root {
+    -fx-background-color: beige;
+}
+
+.button {
+    -fx-background-color: orangered;
+    -fx-font-weight: bold;
+}
+
+.hyperlink {
+    -fx-font-size: 1.2em;
+}

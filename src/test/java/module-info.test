@@ -1,0 +1,17 @@
+//
+// https://github.com/java9-modularity/gradle-modules-plugin#whitebox-testing
+//
+
+// make module visible
+--add-modules
+  org.testfx,org.testfx.junit5,org.testfx.monocle
+
+// same as requires in a regular module descriptor.
+--add-reads
+  fx.demo.main=org.testfx,org.testfx.junit5
+
+--add-opens
+  fx.demo.main/com.valantic.fx=org.testfx.junit5,org.testfx.monocle
+
+--add-exports
+  javafx.graphics/com.sun.javafx.application=org.testfx

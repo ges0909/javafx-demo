@@ -1,0 +1,71 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.javamodularity.moduleplugin' version '1.8.12'
+    id 'org.openjfx.javafxplugin' version '0.0.14'
+    id 'org.beryx.jlink' version '2.25.0'
+    // id 'idea'
+    id "io.freefair.lombok" version '8.0.1'
+}
+
+group 'com.valantic.fx'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    slf4jVersion = '2.0.7'
+    junitVersion = '5.9.2'
+    testfxVersion = '4.0.16-alpha'
+}
+
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+application {
+    mainModule = 'fx.demo.main'
+    mainClass = 'com.valantic.fx.FxDemoApplication'
+}
+
+javafx {
+    version = '17.0.6'
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+
+dependencies {
+    implementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    runtimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    implementation group: 'org.testfx', name: 'testfx-junit5', version: "${testfxVersion}"
+    implementation group: 'org.assertj', name: 'assertj-core', version: '3.24.2'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: "${slf4jVersion}"
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: "${slf4jVersion}"
+    implementation group: 'org.testfx', name: 'openjfx-monocle', version: 'jdk-12.0.1+2' // for headless mode
+}
+
+test {
+    useJUnitPlatform()
+    // headless mode
+//    moduleOptions {
+//        runOnClasspath = true // ignore modules (required for headless mode)
+//    }
+//    jvmArgs '-Dheadless=true'
+}
+
+
+jlink {
+    imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip")
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+    launcher {
+        name = 'app'
+    }
+}
+
+jlinkZip {
+    group = 'distribution'
+}
