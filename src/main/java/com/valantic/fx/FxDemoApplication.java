@@ -75,7 +75,7 @@ public class FxDemoApplication extends Application {
     }
 
     private void closeProgram() {
-        log.info("Programm closed");
+        log.info("Program closed");
         window.close();
     }
 }
