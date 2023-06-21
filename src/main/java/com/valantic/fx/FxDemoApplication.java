@@ -18,6 +18,7 @@ import java.util.List;
 @Slf4j
 public class FxDemoApplication extends Application {
 
+    private Stage window;
     private static FxDemoApplication instance;
 
     public static FxDemoApplication getInstance() {
@@ -35,10 +36,15 @@ public class FxDemoApplication extends Application {
     }
 
     @Override
-    public void start(final Stage window) throws IOException {
+    public void start(final Stage stage) throws IOException {
+        window = stage;
         window.setTitle("JavaFX Demo!");
+        window.setOnCloseRequest(e -> {
+            e.consume();
+            closeProgram();
+        });
 
-        URL location = getClass().getResource("fx-demo-view.fxml"); // FxDemoApplication.class.getResource("fx-demo-view.fxml");
+        final URL location = getClass().getResource("fx-demo-view.fxml"); // FxDemoApplication.class.getResource("fx-demo-view.fxml");
         final FXMLLoader loader = new FXMLLoader(location);
         final VBox root = loader.load(); // don't use 'Parent' because there is no 'Parent.getChildren()'
         root.getChildren().addAll(buildContent());
@@ -51,7 +57,7 @@ public class FxDemoApplication extends Application {
 
     @Override
     public void stop() {
-        // for the sake of completeness
+        // for completeness only
     }
 
     public void browse(final String url) {
@@ -59,12 +65,17 @@ public class FxDemoApplication extends Application {
     }
 
     private List<Node> buildContent() {
-        final EventHandler<ActionEvent> buttonClickHandler = event ->
+        final EventHandler<ActionEvent> clickHandler = event ->
                 log.info("'{}' clicked", ((Button) event.getTarget()).getText());
         final var button = new Button("Button #1");
-        button.setOnAction(buttonClickHandler);
+        button.setOnAction(clickHandler);
         final var button2 = new Button("Button #2");
-        button2.setOnAction(buttonClickHandler);
+        button2.setOnAction(e -> closeProgram());
         return List.of(button, button2);
+    }
+
+    private void closeProgram() {
+        log.info("Programm closed");
+        window.close();
     }
 }

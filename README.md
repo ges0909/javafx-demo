@@ -60,33 +60,31 @@
 
 ### Containers
 
-Pane
-
-AnchorPane
+#### AnchorPane
 
 - simplest container
 - absolute controls positioning, x,y coordinates
 
-BorderPane
+#### BorderPane
 
 - TOP, LEFT, CENTER, RIGHT, BOTTOM
 
-FlowPane
+#### FlowPane
 
 - floating (resizing)
 
-GridPane
+#### GridPane
 
 - cells with coordinates
 
-HBox, VBox
+#### HBox, VBox
 
 ### Properties
 
 - anonymous classes: `StringProperty`, `IntegerProperty`, ...
 - implementations: `SimpleStringProperty`, `SimpleIntegerProperty`, ...
-- adding event listener to property
-- binding properties
+- allows adding event listener to properties
+- properties may be bound to others to get reactivity
 
 ### Styles
 
