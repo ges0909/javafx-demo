@@ -16,19 +16,20 @@ repositories {
 }
 
 ext {
-    slf4jVersion = '2.0.7'
-    junitVersion = '5.9.2'
-    testfxVersion = '4.0.16-alpha'
+    slf4j = '2.0.7'
+    junit = '5.9.2'
+    assertj = '3.24.2'
+    testfx = '4.0.16-alpha'
+    monocle = 'jdk-12.0.1+2'
 }
-
-sourceCompatibility = '11'
-targetCompatibility = '11'
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 
 application {
+    sourceCompatibility = '11'
+    targetCompatibility = '11'
     mainModule = 'fx.demo.main'
     mainClass = 'com.valantic.fx.FxDemoApplication'
 }
@@ -39,13 +40,13 @@ javafx {
 }
 
 dependencies {
-    implementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-    runtimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
-    implementation group: 'org.testfx', name: 'testfx-junit5', version: "${testfxVersion}"
-    implementation group: 'org.assertj', name: 'assertj-core', version: '3.24.2'
-    implementation group: 'org.slf4j', name: 'slf4j-api', version: "${slf4jVersion}"
-    implementation group: 'org.slf4j', name: 'slf4j-simple', version: "${slf4jVersion}"
-    implementation group: 'org.testfx', name: 'openjfx-monocle', version: 'jdk-12.0.1+2' // for headless mode
+    implementation("org.junit.jupiter:junit-jupiter-api:${junit}")
+    runtimeOnly("org.junit.jupiter:junit-jupiter-engine:${junit}")
+    implementation group: 'org.testfx', name: 'testfx-junit5', version: "${testfx}"
+    implementation group: 'org.assertj', name: 'assertj-core', version: "${assertj}"
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: "${slf4j}"
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: "${slf4j}"
+    implementation group: 'org.testfx', name: 'openjfx-monocle', version: "${monocle}" // for headless required
 }
 
 test {
