@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
 @Slf4j
@@ -23,8 +24,8 @@ public class FxDemoApplication extends Application {
         return instance;
     }
 
-    public static void main(final String[] args) {
-        launch(); // derived from 'Application'
+    public static void main(final String... args) {
+        launch(args);
     }
 
     @Override
@@ -34,17 +35,18 @@ public class FxDemoApplication extends Application {
     }
 
     @Override
-    public void start(final Stage stage) throws IOException {
-        // final FXMLLoader loader = new FXMLLoader(FxDemoApplication.class.getResource("fx-demo-view.fxml"));
-        final FXMLLoader loader = new FXMLLoader(getClass().getResource("fx-demo-view.fxml"));
-        // final Parent root = loader.load(); // don't use because there is no 'Parent.getChildren()'
-        final VBox root = loader.load();
+    public void start(final Stage window) throws IOException {
+        window.setTitle("JavaFX Demo!");
+
+        URL location = getClass().getResource("fx-demo-view.fxml"); // FxDemoApplication.class.getResource("fx-demo-view.fxml");
+        final FXMLLoader loader = new FXMLLoader(location);
+        final VBox root = loader.load(); // don't use 'Parent' because there is no 'Parent.getChildren()'
+        root.getChildren().addAll(buildContent());
+
         final Scene scene = new Scene(root, 320, 240);
         // scene.getStylesheets().add(getClass().getResource("fx-demo-styles.css").toExternalForm());
-        root.getChildren().addAll(buildButtons());
-        stage.setTitle("JavaFX Demo!");
-        stage.setScene(scene);
-        stage.show();
+        window.setScene(scene);
+        window.show();
     }
 
     @Override
@@ -56,7 +58,7 @@ public class FxDemoApplication extends Application {
         getHostServices().showDocument(url);
     }
 
-    private List<Node> buildButtons() {
+    private List<Node> buildContent() {
         final EventHandler<ActionEvent> buttonClickHandler = event ->
                 log.info("'{}' clicked", ((Button) event.getTarget()).getText());
         final var button = new Button("Button #1");
