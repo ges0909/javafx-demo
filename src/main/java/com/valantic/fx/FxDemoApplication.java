@@ -39,10 +39,6 @@ public class FxDemoApplication extends Application {
     public void start(final Stage stage) throws IOException {
         window = stage;
         window.setTitle("JavaFX Demo!");
-        window.setOnCloseRequest(e -> {
-            e.consume();
-            closeProgram();
-        });
 
         final URL location = getClass().getResource("fx-demo-view.fxml"); // FxDemoApplication.class.getResource("fx-demo-view.fxml");
         final FXMLLoader loader = new FXMLLoader(location);
@@ -70,12 +66,8 @@ public class FxDemoApplication extends Application {
         final var button = new Button("Button #1");
         button.setOnAction(clickHandler);
         final var button2 = new Button("Button #2");
-        button2.setOnAction(e -> closeProgram());
+        button2.setOnAction(clickHandler);
         return List.of(button, button2);
     }
 
-    private void closeProgram() {
-        log.info("Program closed");
-        window.close();
-    }
 }
