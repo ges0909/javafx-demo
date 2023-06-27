@@ -11,6 +11,8 @@
 
 ### JavaFX tutorials
 
+FX = acronym for EFFECTS, meaning "special effects"
+
 - [JavaFX 20 and Beyond](https://youtu.be/f8TOo8TL4-k), Kevin Rushforth, Oracle, Java Developer Day, March 2023
 - [Learning JavaFX GUI Development](https://www.linkedin.com/learning/learning-javafx-gui-development?u=101685506)
 - [JavaFX Grundkurs](https://www.linkedin.com/learning/javafx-grundkurs?u=101685506)
@@ -39,8 +41,8 @@
 - 6-month cadence
 - same release numbering as OpenJDK
 - JavaFX n will run on JDK n-1 or in practice
-  - JavaFX 11-19 -> JDK 11 LTS
-  - javaFX 20 -21 -> JDK 17 LTS
+    - JavaFX 11-19 -> JDK 11 LTS
+    - javaFX 20 -21 -> JDK 17 LTS
 - JavaFX 17, Sept. 2021
 - JavaFX 18, March 2022
 - JavaFX 19, Sept. 2022
@@ -51,10 +53,10 @@
 ### Building and running
 
 - jlink
-  - produces a JDK that includes JavaFX modules
+    - produces a JDK that includes JavaFX modules
 - jpackage
-  - creates a distributable application (exe, dmg, rmp, deb, ...)
-  - alternative: maven goal
+    - creates a distributable application (exe, dmg, rmp, deb, ...)
+    - alternative: maven goal
 
 ### Architecture
 
