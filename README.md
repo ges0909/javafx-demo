@@ -19,6 +19,18 @@ FX = acronym for EFFECTS, meaning "special effects"
 - [The JavaFX Scene – what it is and how to use it effectively](https://edencoding.com/javafx-scene/)
 - [Jenkov: JavaFX Tutorial](https://jenkov.com/tutorials/javafx/index.html)
 
+### Libraries
+
+| Name        |                                       |
+|-------------|---------------------------------------|
+| BootstrapFX | Bootstrap for JavaFX                  |
+| ControlsFX  | Alternative UI controls               |
+| FormFX      | Makes form easily in JavaFX           |
+| FXGL        | FX Gaming Library                     |
+| Iconli      | Icon packs for Java applications      |
+| TilesFX     | Tiles that can be used for dashboards |
+| ValidatorFX | Form validation for JavaFX            |
+
 ### Features
 
 - multiple platform: Win, maxOS, Linux
