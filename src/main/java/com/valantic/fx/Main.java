@@ -16,12 +16,12 @@ import java.net.URL;
 import java.util.List;
 
 @Slf4j
-public class FxDemoApplication extends Application {
+public class Main extends Application {
 
+    private static Main instance;
     private Stage window;
-    private static FxDemoApplication instance;
 
-    public static FxDemoApplication getInstance() {
+    public static Main getInstance() {
         return instance;
     }
 

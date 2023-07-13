@@ -28,7 +28,7 @@ import static org.testfx.assertions.api.Assertions.assertThat;
 
 
 @ExtendWith(ApplicationExtension.class)
-class FxDemoApplicationTest {
+class MainTest {
 
     private final NodeFinder nodeFinder = FxAssert.assertContext().getNodeFinder();
 
@@ -63,7 +63,7 @@ class FxDemoApplicationTest {
 
     @BeforeEach
     void beforeEachTest() throws Exception {
-        ApplicationTest.launch(FxDemoApplication.class);
+        ApplicationTest.launch(Main.class);
     }
 
     @AfterEach

@@ -10,8 +10,8 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FxDemoController implements Initializable {
-    
+public class Controller implements Initializable {
+
     @FXML
     private Label welcomeText;
 
@@ -33,7 +33,7 @@ public class FxDemoController implements Initializable {
 
     @FXML
     protected void onValanticHyperLinkClick(final ActionEvent event) {
-        FxDemoApplication //
+        Main //
                 .getInstance() //
                 .browse(valanticLink.getText());
     }
